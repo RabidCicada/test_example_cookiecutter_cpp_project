@@ -1,0 +1,15 @@
+get_filename_component(
+  EXAMPLE-COOKIECUTTER-CPP-PROJECT_CMAKE_DIR
+  ${CMAKE_CURRENT_LIST_FILE}
+  PATH
+)
+set(CMAKE_MODULE_PATH ${EXAMPLE-COOKIECUTTER-CPP-PROJECT_CMAKE_DIR} ${CMAKE_MODULE_PATH})
+
+include(CMakeFindDependencyMacro)
+if(@FAKE_DEPENDENCY_FOUND@)
+find_dependency(FAKE_DEPENDENCY)
+endif()
+
+if(NOT TARGET example-cookiecutter-cpp-project::example-cookiecutter-cpp-project)
+  include("${EXAMPLE-COOKIECUTTER-CPP-PROJECT_CMAKE_DIR}/example-cookiecutter-cpp-projectTargets.cmake")
+endif()
